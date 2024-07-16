@@ -8,11 +8,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Steps to Run the Project.
 
-### 1 Clone the repository or download it in zipped format
+### 1. Git Clone
+Clone the repository or download it in zipped format
 
-### 2 open project repository nytimes-articles-app and do npm install inside nytimes-articles-app folder
+### 2. npm install into nytimes-articles-app folder 
+open project repository nytimes-articles-app and do npm install inside nytimes-articles-app folder
 
-### 3 once installation has been done we need do npm start to run the application. 
+### 3. Run Application
+once installation has been done we need do npm start to run the application. 
 
 In the project directory, you can run:
 
