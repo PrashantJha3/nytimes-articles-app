@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/ArticleList.css'; 
+import ArticleDetail from '../components/ArticleDetail';
+import '../styles/ArticleList.css'; // Import your custom CSS for ArticleList
 
-const ArticleList = ({ onSelectArticle }) => {
+const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesPerPage] = useState(5);
+  const [selectedArticle, setSelectedArticle] = useState(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
-        try {
       const response = await axios.get(
         `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=GscBytNZgCYpszIh2uiQ5RoqFapCZ7Ba`
       );
       setArticles(response.data.results);
-    } catch (error) {
-        console.error('Error fetching articles:', error);
-      }
     };
 
     fetchArticles();
   }, []);
-  
 
+  const handleSelectArticle = article => {
+    setSelectedArticle(article);
+  };
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
@@ -31,15 +31,15 @@ const ArticleList = ({ onSelectArticle }) => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div className="article-list-container">
+    <div className='row'>
+    <div className="article-list-container col-md-6" >
       <h2 className="text-center mb-4">Most Popular Articles</h2>
-      <ul className="list-group" role="list">
+      <ul className="list-group">
         {currentArticles.map(article => (
           <li
             key={article.id}
             className="list-group-item list-group-item-action"
-            onClick={() => onSelectArticle(article)}
-            role="listitem"
+            onClick={() => handleSelectArticle(article)}
           >
             <div className="article-title">{article.title}</div>
             <div className="article-details">
@@ -51,7 +51,6 @@ const ArticleList = ({ onSelectArticle }) => {
         ))}
       </ul>
       
-    
       <nav className="mt-4">
         <ul className="pagination justify-content-center">
           {[...Array(Math.ceil(articles.length / articlesPerPage)).keys()].map(pageNumber => (
@@ -63,6 +62,12 @@ const ArticleList = ({ onSelectArticle }) => {
           ))}
         </ul>
       </nav>
+          
+      
+    </div>
+    <div className="col-md-6">
+          {selectedArticle && <ArticleDetail article={selectedArticle} />}
+          </div>
     </div>
   );
 };
