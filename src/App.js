@@ -12,11 +12,11 @@ function App() {
   return (
       <div className="app-container">
       <div className="container-fluid">
-        <div>
-          <div>
+        <div className="row">
+          <div className="col-md-6">
             <ArticleList onSelectArticle={handleSelectArticle} />
           </div>
-          <div>
+          <div className="col-md-6">
             {selectedArticle && <ArticleDetail article={selectedArticle} />}
           </div>
         </div>
