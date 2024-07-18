@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import ArticleList from './components/ArticlesList';
+import ArticlesList from './components/ArticlesList';
 import ArticleDetail from './components/ArticleDetail';
 import './App.css';
 
@@ -10,12 +10,13 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <div className="">
-      <div className="row">
-      <div className="col-md-6">
-        <ArticleList onSelect={setSelectedArticle} />
+      <div className="content">
+        <div className='row'>
+          <div className='col-md-6'>
+        
+        <ArticlesList onSelect={setSelectedArticle} />
         </div>
-        <div className="col-md-6 marg-top">
+        <div className='col-md-6 marg-top'>
         {selectedArticle && <ArticleDetail article={selectedArticle} />}
         </div>
         </div>

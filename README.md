@@ -1,21 +1,8 @@
-# nytimes-articles-app
-Display Articles from newyork times
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
-# Steps to Run the Project.
-
-### 1. Git Clone
-Clone the repository or download it in zipped format
-
-### 2. npm install into nytimes-articles-app folder 
-open project repository nytimes-articles-app and do npm install inside nytimes-articles-app folder
-
-### 3. Run Application
-once installation has been done we need do npm start to run the application. 
 
 In the project directory, you can run:
 
@@ -81,4 +68,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-

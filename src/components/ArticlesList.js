@@ -1,44 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { fetchArticles } from '../services/nytimesService';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchArticlesThunk, setPeriod, setCurrentPage } from '../store/articlesSlice';
 import ArticleItem from './ArticleItem';
 import Loading from './Loading';
 import Error from './Error';
 
 const ArticleList = ({ onSelect }) => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [period, setPeriod] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
+  const articles = useSelector((state) => state.articles.items);
+  const status = useSelector((state) => state.articles.status);
+  const error = useSelector((state) => state.articles.error);
+  const period = useSelector((state) => state.articles.period);
+  const currentPage = useSelector((state) => state.articles.currentPage);
   const articlesPerPage = 5;
 
   useEffect(() => {
-    const getArticles = async () => {
-      try {
-        setLoading(true);
-        const articles = await fetchArticles(period);
-        setArticles(articles);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-
-    getArticles();
-  }, [period]);
+    dispatch(fetchArticlesThunk(period));
+  }, [dispatch, period]);
 
   const handlePeriodChange = (event) => {
-    setPeriod(event.target.value);
-    setCurrentPage(1); // Reset to first page when period changes
+    dispatch(setPeriod(event.target.value));
   };
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    dispatch(setCurrentPage(pageNumber));
   };
 
-  if (loading) return <Loading />;
-  if (error) return <Error message={error} />;
+  if (status === 'loading') return <Loading />;
+  if (status === 'failed') return <Error message={error} />;
 
   // Calculate articles to display for the current page
   const indexOfLastArticle = currentPage * articlesPerPage;
