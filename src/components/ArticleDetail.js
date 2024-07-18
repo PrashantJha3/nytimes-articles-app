@@ -1,25 +1,20 @@
 import React from 'react';
-import '../styles/ArticleDetail.css';
 
 const ArticleDetail = ({ article }) => {
-  if (!article) {
-    return <div>No article selected</div>;
-  }
+  const imageUrl = article.media.length > 0 ? article.media[0]['media-metadata'][2].url : ''; // use larger image
 
   return (
-    <div >
-         <h2 className="text-center mb-4">Articles Details</h2>
-         <div className="article-detail-container">
-      <h2 className="article-title">{article.title}</h2>
-      <p className="article-byline">{article.byline}</p>
-      <p className="article-abstract">{article.abstract}</p>
-      <a href={article.url} className="article-link" target="_blank" rel="noopener noreferrer">
+    <div className="article-detail">
+      <h2>{article.title}</h2>
+      {imageUrl && <img src={imageUrl} alt={article.title} />}
+      <p>{article.byline}</p>
+      <p>{article.published_date}</p>
+      <p>{article.abstract}</p>
+      <a href={article.url} target="_blank" rel="noopener noreferrer">
         Read more
       </a>
-      </div>
     </div>
   );
 };
 
 export default ArticleDetail;
-

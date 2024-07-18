@@ -1,8 +1,148 @@
-.app-container {
-  background-color: #f9f9f9;
-  padding: 20px 0;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container-fluid {
-  margin-top: 20px;
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  text-align: center;
 }
+
+.content {
+  display: flex;
+}
+
+.article-list {
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.article-item {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.article-item:hover {
+  background-color: #f9f9f9;
+}
+
+.article-detail {
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.marg-top{
+margin-top: 4.5rem !important;
+}
+
+.loading, .error {
+  text-align: center;
+  margin-top: 2rem;
+}
+.filter {
+  margin-bottom: 1rem;
+}
+
+.filter label {
+  margin-right: 0.5rem;
+}
+
+.article-item {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.article-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.article-item h2 {
+  font-size: 1.2rem;
+}
+
+
+
+.loading, .error {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+
+.article-list-container {
+  padding: 1rem;
+}
+
+.filter {
+  margin-bottom: 1rem;
+}
+
+.filter label {
+  margin-right: 0.5rem;
+}
+
+.filter select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.article-item {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.article-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.article-item h2 {
+  font-size: 1.2rem;
+}
+
+.article-detail img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.loading, .error {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  margin: 0 0.25rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #333;
+  color: #fff;
+}
+
